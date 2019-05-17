@@ -112,7 +112,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/idcard_cn_dimen_10"
-            android:src="@mipmap/iv_megvii_idcard_bottom_logo" />
+            android:src="@mipmap/iv_megvii_idcard_bottom_logo"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <TextView
