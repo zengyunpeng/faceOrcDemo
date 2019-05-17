@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.megvii.demo.activity.IDCardDetectActivity;
 import com.megvii.demo.utils.Configuration;
 import com.megvii.idcardquality.IDCardQualityLicenseManager;
@@ -23,6 +24,10 @@ import com.megvii.meglive_sdk.listener.DetectCallback;
 import com.megvii.meglive_sdk.listener.PreCallback;
 import com.megvii.meglive_sdk.manager.MegLiveManager;
 import com.teemo.myapplication.R;
+import com.teemo.myapplication.demo.bean.BackPageBean;
+import com.teemo.myapplication.demo.bean.BankBean;
+import com.teemo.myapplication.demo.bean.FrontPageBean;
+import com.teemo.myapplication.demo.utils.Constants;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -144,10 +149,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
                 startGetLicense(0, INTO_IDCARDSCAN_PAGE);
                 break;
             case R.id.bankCard:
-                Configuration.setIsVertical(this, true);
-                Configuration.setCardType(this, 3);
-                //开始鉴权
-                startGetLicense(0, BANK_CARD_REQUEST_CODE);
+//                Configuration.setIsVertical(this, true);
+//                Configuration.setCardType(this, 2);
+//                //开始鉴权
+//                startGetLicense(0, BANK_CARD_REQUEST_CODE);
+
                 break;
             default:
                 break;
@@ -412,18 +418,61 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
 //            startActivity(intent);
             //获取身份证图片,提取有用信息
             Log.i("tag", "身份证扫描结果返回扫描结果返回");
-            byte[] portraitimg_bitmaps = data.getByteArrayExtra("idcardimg_bitmap");
+            byte[] portraitimgBitmaps = data.getByteArrayExtra("idcardimg_bitmap");
             byte[] portraitimg_bitmap = data.getByteArrayExtra("portraitimg_bitmap");//抠出的头像
             if (portraitimg_bitmap != null) {
-                Log.i("tag", "身份证头像节码图片不为空" + portraitimg_bitmaps.length);
+                Log.i("tag", "身份证头像节码图片不为空" + portraitimgBitmaps.length);
 
             }
 
-            if (portraitimg_bitmaps != null) {
-                Log.i("tag", "身份证字节码图片不为空" + portraitimg_bitmaps.length);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(portraitimg_bitmaps, 0, portraitimg_bitmaps.length);
+            if (portraitimgBitmaps != null) {
+                Log.i("tag", "身份证字节码图片不为空" + portraitimgBitmaps.length);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(portraitimgBitmaps, 0, portraitimgBitmaps.length);
                 img.setImageBitmap(bitmap);
             }
+
+
+            HttpRequestManager.getInstance()
+                    .distinguishBankCard(this, Constants.ID_CARD_VERIFY_URL, Constants.API_KEY, Constants.SECRET, portraitimgBitmaps, new HttpRequestCallBack() {
+
+                        @Override
+                        public void onSuccess(String responseBody) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(responseBody);
+                                int result = jsonObject.getInt("result");
+                                if (result == 1001) {
+                                    int side = jsonObject.getInt("side");
+                                    if (side == 0) {
+                                        //正面
+                                        FrontPageBean frontPageBean = new Gson().fromJson(responseBody, FrontPageBean.class);
+                                        Toast.makeText(MainActivity.this, "身份证正面识别成功", Toast.LENGTH_SHORT).show();
+
+                                    } else {
+                                        //反面
+                                        BackPageBean backPageBean = new Gson().fromJson(responseBody, BackPageBean.class);
+                                        Toast.makeText(MainActivity.this, "身份证反面识别成功", Toast.LENGTH_SHORT).show();
+
+
+                                    }
+                                } else {
+                                    Toast.makeText(MainActivity.this, "识别异常,请重试:" + result, Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(MainActivity.this, "未知错误" + e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, byte[] responseBody) {
+                            if (statusCode == 403) {
+                                Toast.makeText(MainActivity.this, "鉴权失败,请检查配置", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(MainActivity.this, "网络请求失败,请重试", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
 
 
         } else if (requestCode == BANK_CARD_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -436,6 +485,44 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
                 img.setImageBitmap(bitmap);
             }
             //进行比对
+
+            HttpRequestManager.getInstance()
+                    .distinguishBankCard(this, Constants.BANK_CARD_VERIFY_URL, Constants.API_KEY, Constants.SECRET, portraitimg_bitmaps, new HttpRequestCallBack() {
+
+                        @Override
+                        public void onSuccess(String responseBody) {
+                            try {
+                                BankBean bankBean = new Gson().fromJson(responseBody, BankBean.class);
+                                switch (bankBean.getResult()) {
+                                    case 1001:
+                                        Toast.makeText(MainActivity.this, "银行卡号识别成功", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case 1002:
+                                        Toast.makeText(MainActivity.this, "银行卡号存在未识别出来的数字", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case 2001:
+                                    case 2002:
+                                    case 2003:
+                                        Toast.makeText(MainActivity.this, "图片格式有误", Toast.LENGTH_SHORT).show();
+                                    default:
+                                        break;
+                                }
+
+
+                            } catch (Exception e) {
+                                Toast.makeText(MainActivity.this, "未知错误" + e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, byte[] responseBody) {
+                            if (statusCode == 403) {
+                                Toast.makeText(MainActivity.this, "鉴权失败" + statusCode, Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(MainActivity.this, "未知错误" + statusCode, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
 
         }
     }

@@ -15,6 +15,15 @@ public interface Constants {
      * 人脸识别人脸比对接口
      */
     String VERIFY_URL = "https://api.megvii.com/faceid/v3/sdk/verify";
+    /**
+     * 身份证认证接口
+     */
+    String ID_CARD_VERIFY_URL = "https://api.megvii.com/faceid/v3/ocridcard";
+    /**
+     * 银行卡识别接口
+     */
+    String BANK_CARD_VERIFY_URL = "https://api.megvii.com/faceid/v3/ocridcard";
+
 
     String API_KEY = "nfihZtxQviTdqDnRxf_uSCURAY0XUhyy";
     String SECRET = "Fuhh9fp7v6OgSGzftwkXQTIvSQaBZnrd";

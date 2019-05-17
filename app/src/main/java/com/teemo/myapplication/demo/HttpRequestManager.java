@@ -151,17 +151,13 @@ public class HttpRequestManager {
 
     /**
      * 比对银行卡的方法
-     *
-     * @param context
-     * @param url
-     * @param bizToken
-     * @param megLiveData
-     * @param listener
      */
-    public void distinguishBankCard(Context context, String url, String bizToken, byte[] megLiveData, HttpRequestCallBack listener) {
+    public void distinguishBankCard(Context context, String url, String appKey, String appSecret, byte[] megLiveData, HttpRequestCallBack listener) {
         MultipartEntity entity = new MultipartEntity();
         entity.addBinaryPart("image", megLiveData);
         sendMultipartRequest(context, url, entity, new HashMap<String, String>(), listener);
     }
+
+
 
 }
