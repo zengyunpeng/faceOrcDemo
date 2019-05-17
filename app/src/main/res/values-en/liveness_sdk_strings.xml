@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="livenessHomePromptFrontalFaceText">Please show your frontal face</string>
+    <string name="livenessHomePromptFaceEreaText">Invalid face area for detection</string>
+    <string name="livenessHomePromptBrighterText">Please under brighter lights conditions</string>
+    <string name="livenessHomePromptDarkerText">Please under less bright lights conditions</string>
+    <string name="livenessHomePromptCloserText">Please come closer</string>
+    <string name="livenessHomePromptFurtherText">Please be a little farther</string>
+    <string name="livenessHomePromptNoBacklightingText">Please avoid side lighting and backlighting</string>
+    <string name="livenessHomePromptFrontalFaceInBoundingBoxText">Please fit your full-frontal face in the bounding box</string>
+    <string name="livenessHomePromptNoEyesOcclusionText">Please avoid eyes occlusion</string>
+    <string name="livenessHomePromptNoMouthOcclusionText">Please avoid mouth occlusion</string>
+    <string name="livenessHomePromptStayStillText">Good, please stay still</string>
+    <string name="livenessHomePromptWaitText"> Please wait for verification</string>
+    <string name="livenessHomePromptShakeHeadText">Please turn your head to the left and right</string>
+    <string name="livenessHomePromptNodText"> Please nod your head</string>
+    <string name="livenessHomePromptOpenMouthText">Please open your mouth and close it</string>
+    <string name="livenessHomePromptBlinkText"> Please blink your eyes </string>
+    <string name="livenessExitTitlePromptText">Are you sure to quit?</string>
+    <string name="livenessExitLeftPromptText">No</string>
+    <string name="livenessExitRightPromptText">Yes</string>
+    <string name="livenessHomePromptVerticalText">Please pick up the phone and keep it vertical</string>
+</resources>

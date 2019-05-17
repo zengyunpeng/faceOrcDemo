@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_idcard_cn_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <TextureView
+        android:id="@+id/idcardscan_cn_layout_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.megvii.demo.view.IDCardGuide
+        android:id="@+id/idcardscan_cn_layout_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <ImageView
+        android:id="@+id/iv_people_light_icon"
+        android:layout_width="347dp"
+        android:layout_height="220dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/bg_people_light_icon"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_china_light_icon"
+        android:layout_width="347dp"
+        android:layout_height="220dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/bg_china_light_icon"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ib_animal_breath_view"
+        android:layout_width="347dp"
+        android:layout_height="220dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/bg_sfz_light"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ib_animal_one_view"
+        android:layout_width="347dp"
+        android:layout_height="220dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/bg_sfz_light"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/tv_tip_text"
+        android:layout_width="286dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:textColor="#FFFFFFFF"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <include layout="@layout/view_toast" />
+
+    <com.megvii.demo.view.IDCardGuideH
+        android:id="@+id/idcardscan_cn_layout_guide_h"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="visible" />
+
+
+    <ImageView
+        android:id="@+id/iv_idcard_cn_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_icon_tick_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/icon_tick"
+        android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_megvii_idcard_cn_tips"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_megvii_idcard_cn_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/idcard_cn_dimen_30"
+            android:text="@string/idcard_cn_tips_face"
+            android:textColor="@color/idcard_cn_tips_text_color"
+            android:textSize="@dimen/idcard_cn_tips_text_size" />
+
+
+        <ImageView
+            android:layout_width="139dp"
+            android:layout_height="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/idcard_cn_dimen_10"
+            android:src="@mipmap/iv_megvii_idcard_bottom_logo" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_megvii_idcard_cn_h_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/idcard_cn_horizontal_tips_margin_bottom"
+        android:text="@string/idcard_cn_tips_emblem"
+        android:textColor="@color/idcard_cn_tips_text_color"
+        android:textSize="@dimen/idcard_cn_tips_text_size"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/in_idcard_cn_title_bar"
+        layout="@layout/view_title_bar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_megvii_idcard_cn_title_bar_h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/idcard_cn_dimen_10"
+        android:background="@android:color/transparent"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rl_megvii_idcard_cn_goback_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_megvii_idcard_cn_bg_icon_h"
+                android:layout_width="@dimen/idcard_cn_gb_icon_width"
+                android:layout_height="@dimen/idcard_cn_gb_icon_height"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/idcard_cn_gb_icon_marg_left"
+                android:background="@mipmap/iv_megvii_idcard_cn_back_h" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_megvii_idcard_cn_bg_icon_h"
+                android:text="返回"
+                android:textColor="@color/idcard_cn_white"
+                android:textSize="@dimen/idcard_cn_gb_text_size" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_megvii_idcard_cn_tips_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/idcard_cn_white"
+            android:textSize="@dimen/idcard_cn_gb_text_size" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_idcard_cn_bottom_logo_h"
+        android:layout_width="105dp"
+        android:layout_height="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/idcard_cn_dimen_20"
+        android:layout_marginBottom="@dimen/idcard_cn_dimen_10"
+        android:src="@mipmap/iv_megvii_idcard_bottom_logo_h"
+        android:visibility="gone" />
+
+</RelativeLayout>

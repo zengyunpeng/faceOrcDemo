@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/idcard_cn_title_bar_height"
+    android:background="@color/idcard_cn_white">
+    <RelativeLayout
+        android:id="@+id/rl_megvii_idcard_cn_goback"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_megvii_idcard_cn_bg_icon"
+            android:layout_width="@dimen/idcard_cn_gb_icon_width"
+            android:layout_height="@dimen/idcard_cn_gb_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/idcard_cn_gb_icon_marg_left"
+            android:background="@mipmap/iv_megvii_idcard_cn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_megvii_idcard_cn_bg_icon"
+            android:text="返回"
+            android:textColor="@color/idcard_cn_gb_text_color"
+            android:textSize="@dimen/idcard_cn_gb_text_size" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_megvii_idcard_cn_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="识别结果"
+        android:textSize="@dimen/idcard_cn_gb_text_size"
+        android:textColor="@color/idcard_cn_tips_bg_color"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/tv_megvii_idcard_cn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="#00B2E3"
+        android:textSize="@dimen/idcard_cn_gb_text_size"
+        android:gravity="center"
+        android:paddingLeft="@dimen/idcard_cn_dimen_15"
+        android:paddingRight="@dimen/idcard_cn_dimen_15"
+        android:text="重新拍摄"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        />
+</RelativeLayout>

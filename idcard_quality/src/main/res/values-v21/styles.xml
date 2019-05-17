@@ -1,0 +1,22 @@
+<resources>
+
+
+
+    <style name="idcard_cn_AppTheme" parent="@android:style/Theme.Holo.NoActionBar.TranslucentDecor">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="idcard_cn_TranslutTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- values-v21下的主题  -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <!--  android 5.0开始，需要把颜色设置成透明，否则状态栏会呈现系统默认的浅灰色   -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="idcard_cn_FullScreenTheme" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        <!-- values-v21下的主题  -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <!--  android 5.0开始，需要把颜色设置成透明，否则状态栏会呈现系统默认的浅灰色   -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>

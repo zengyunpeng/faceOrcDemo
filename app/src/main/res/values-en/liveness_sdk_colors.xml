@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="livenessHomeRingColor">#EAF2F6</color>
+    <color name="livenessHomeProcessBarColor">#38B0E8</color>
+    <color name="livenessHomeValidationFailProcessBarColor">#FF0000</color>
+    <color name="livenessHomeBackgroundColor">#FFFFFF</color>
+    <color name="livenessHomePromptColor">#666666</color>
+    <color name="livenessExitTitlePromptColor">#000000</color>
+    <color name="livenessExitLeftPromptColor">#0076FF</color>
+    <color name="livenessExitRightPromptColor">#0076FF</color>
+
+</resources>

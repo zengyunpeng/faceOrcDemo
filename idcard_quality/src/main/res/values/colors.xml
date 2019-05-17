@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="idcard_cn_white">#FFFFFF</color>
+    <color name="idcard_cn_black">#000000</color>
+    <color name="idcard_cn_flash_bg_color">#FFFFFF</color>
+
+    <color name="idcard_cn_tips_bg_color">#282830</color>
+    <color name="idcard_cn_tips_text_color">#4A4A4A</color>
+    <color name="idcard_cn_toast_text_color">#FFFFFF</color>
+
+    <color name="idcard_cn_title_bar_bg_color">#FAFAFA</color>
+    <color name="idcard_cn_gb_text_color">#5FA3FA</color>
+    <color name="idcard_cn_falsh_page_text_color">#4A4A4A</color>
+
+    <color name="idcard_cn_toast_bg_color">#80000000</color>
+
+    <color name="idcard_cn_upload_btn_bg_color">#5FA3FA</color>
+    <color name="idcard_cn_info_text_color">#515666</color>
+
+    <color name="idcard_cn_press_color">#3171C2</color>
+    <color name="idcard_cn_agreement_unchecked_bt_color">#CFD6DD</color>
+    <color name="idcard_cn_blue">#51c3f6</color>
+
+    <color name="toast_checktrue_bg_color">#80000000</color>
+    <color name="toast_checktrue_text_color">#FFFFFF</color>
+
+</resources>

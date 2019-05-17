@@ -1,0 +1,17 @@
+<resources>
+
+
+
+    <style name="Megvii_idcard_cn_SDKTheme" parent="@android:style/Theme.Holo.NoActionBar.TranslucentDecor">
+    </style>
+    <style name="idcard_cn_TranslutTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- values-v19下的主题  -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+    <style name="idcard_cn_FullScreenTheme" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        <!-- values-v19下的主题  -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+</resources>

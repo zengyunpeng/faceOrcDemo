@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.megvii.meglive_still.demo.MainActivity">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/bt_action_yy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="动作有源"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bt_action_wy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="动作无源"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt_fmp_yy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="静默有源"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bt_fmp_wy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="静默无源"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/idCardQuality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="身份正识别(正面)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/idCardQualityBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="身份正识别(反面)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bankCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="银行卡识别"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+</LinearLayout>

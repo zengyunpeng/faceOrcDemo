@@ -1,0 +1,34 @@
+<resources>
+
+
+    <string name="app_name">身份证质量检测</string>
+    <string name="idcard_cn_tips_face">人像面拍摄</string>
+    <string name="idcard_cn_tips_face_detial">请将身份证人像面放在框内</string>
+    <string name="idcard_cn_tips_emblem">国徽面拍摄</string>
+    <string name="idcard_cn_tips_emblem_detial">请将身份证国徽面放在框内</string>
+
+    <string name="remind_idcard_quality_failed_1">未检测到身份证</string>
+    <string name="remind_idcard_quality_failed_2">请对齐线框</string>
+    <string name="remind_idcard_quality_failed_2_1">请再次对齐线框</string>
+    <string name="remind_idcard_quality_failed_3">图像不清晰，请调整拍摄</string>
+    <string name="remind_idcard_quality_failed_4">存在反光，请调整拍摄</string>
+    <string name="remind_idcard_quality_failed_5">存在阴影，请调整拍摄</string>
+    <string name="remind_idcard_quality_failed_6">请拍摄人像面</string>
+    <string name="remind_idcard_quality_failed_7">请拍摄国徽面</string>
+    <string name="remind_idcard_quality_failed_8">身份证倒置,请放正</string>
+    <string name="tip_good_again">很好，请再次对齐</string>
+
+    <string name="idcard_cn_upload">确认并上传</string>
+    <string name="idcard_cn_re_shoot">重新拍摄</string>
+    <string name="idcard_cn_warning_text">识别失败</string>
+    <string name="idcard_cn_warning_small_text">请注意拍摄角度及光线，并确保身份证两面文字清晰</string>
+    <string name="idcard_cn_dialog_content">拍摄时请将身份证放入框内，请注意拍摄角度及光线，并确保身份证两面文字清晰</string>
+    <string name="idcard_cn_agree_toast_text">请先同意并勾选《FaceID用户协议》</string>
+
+    <string name="idcard_cn_guide_text_double_side">即将进行身份证人像面和国徽面的扫描拍摄</string>
+    <string name="idcard_cn_guide_text_front_side">即将进行身份证人像面的扫描拍摄</string>
+    <string name="idcard_cn_guide_text_back_side">即将进行身份证国徽面的扫描拍摄</string>
+    <string name="tip_rect_first_tip">请保证身份证边缘与线框对齐</string>
+    <string name="tip_rect_first_tip2">请保证银行卡边缘与线框对齐</string>
+
+</resources>
