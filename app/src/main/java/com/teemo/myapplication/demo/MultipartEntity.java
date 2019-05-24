@@ -109,7 +109,7 @@ public class MultipartEntity implements HttpEntity {
             mOutputStream.write(encodingBytes);
             mOutputStream.write(rawData);
             mOutputStream.write(NEW_LINE_STR.getBytes());
-        } catch (final IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

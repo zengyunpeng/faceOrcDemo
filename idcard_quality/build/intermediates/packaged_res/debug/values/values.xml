@@ -121,7 +121,7 @@
     <style name="idcard_cn_FullScreenTheme" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
     </style>
     <style name="idcard_cn_TranslutTheme" parent="Megvii_idcard_cn_SDKTheme">
-        
+        <!-- values下的主题   在4.4之前的版本，设置不了。直接跟随系统主题 -->
     </style>
     <style name="idcard_cn_Transparent">
         <item name="android:windowNoTitle">true</item>

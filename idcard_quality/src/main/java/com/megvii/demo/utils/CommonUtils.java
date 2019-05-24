@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.megvii.demo.bo.Constant;
 
@@ -14,7 +13,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 
 public class CommonUtils {
@@ -55,10 +53,11 @@ public class CommonUtils {
             boolean successful = bitmaptosave.compress(
                     Bitmap.CompressFormat.JPEG, 100, fos);
 
-            if (successful)
+            if (successful) {
                 return mediaStorageDir.getAbsolutePath() + "/" + fileName;
-            else
+            } else {
                 return null;
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return null;
@@ -95,7 +94,7 @@ public class CommonUtils {
         if (bmp == null || bmp.isRecycled())
             return null;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG,90, byteArrayOutputStream);
+        bmp.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
         if (byteArrayOutputStream != null) {
             try {
                 byteArrayOutputStream.close();

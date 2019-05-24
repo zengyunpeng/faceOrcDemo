@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.megvii.demo.activity.IDCardDetectActivity;
+import com.megvii.demo.utils.BitmapUtil;
+import com.megvii.demo.utils.CommonUtils;
 import com.megvii.demo.utils.Configuration;
 import com.megvii.idcardquality.IDCardQualityLicenseManager;
 import com.megvii.licensemanager.Manager;
@@ -318,6 +321,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
 
     @Override
     public void onDetectFinish(String token, int errorCode, String errorMessage, String data) {
+        Log.i("tag", "onDetectFinish-errorCode" + errorCode);
         if (errorCode == 1000) {
             verify(token, data.getBytes());
         }
@@ -343,6 +347,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
             @Override
             public void onSuccess(String responseBody) {
                 progressDialogDismiss();
+                Log.i("tag", "人脸识别返回结果:" + responseBody);
                 try {
                     JSONObject jsonObject = new JSONObject(responseBody);
                     int result_code = jsonObject.getInt("result_code");
@@ -431,12 +436,29 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
                 img.setImageBitmap(bitmap);
             }
 
+            final Uri uri = data.getData();
+            if (uri == null) {
+                Toast.makeText(MainActivity.this, "Uri为null请重试", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            final String path = uri.getPath();
+            Log.i("tag", "uri:" + uri);
+            Log.i("tag", "uri.getScheme():" + uri.getScheme());
+            Log.i("tag", "path:" + path);
 
+
+//            Bitmap bmp = BitmapUtil.getBitmapFromUri(MainActivity.this, uri);
+            Bitmap bmp = BitmapUtil.getBitmapFromAbosolutePath(uri.getPath());
+            Log.i("tag", "" + bmp);
+
+
+            byte[] bytes = CommonUtils.bmp2byteArr(bmp);
             HttpRequestManager.getInstance()
-                    .distinguishBankCard(this, Constants.ID_CARD_VERIFY_URL, Constants.API_KEY, Constants.SECRET, portraitimgBitmaps, new HttpRequestCallBack() {
+                    .distinguishCard(this, Constants.ID_CARD_VERIFY_URL, Constants.API_KEY, Constants.SECRET, bytes, new HttpRequestCallBack() {
 
                         @Override
                         public void onSuccess(String responseBody) {
+                            Log.i("tag", "身份证识别结果返回" + responseBody);
                             try {
                                 JSONObject jsonObject = new JSONObject(responseBody);
                                 int result = jsonObject.getInt("result");
@@ -465,6 +487,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
 
                         @Override
                         public void onFailure(int statusCode, byte[] responseBody) {
+                            Log.i("tag", "鉴权失败,请检查配置" + new String(responseBody));
                             if (statusCode == 403) {
                                 Toast.makeText(MainActivity.this, "鉴权失败,请检查配置", Toast.LENGTH_SHORT).show();
                             } else {
@@ -487,7 +510,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Dete
             //进行比对
 
             HttpRequestManager.getInstance()
-                    .distinguishBankCard(this, Constants.BANK_CARD_VERIFY_URL, Constants.API_KEY, Constants.SECRET, portraitimg_bitmaps, new HttpRequestCallBack() {
+                    .distinguishCard(this, Constants.BANK_CARD_VERIFY_URL, Constants.API_KEY, Constants.SECRET, portraitimg_bitmaps, new HttpRequestCallBack() {
 
                         @Override
                         public void onSuccess(String responseBody) {

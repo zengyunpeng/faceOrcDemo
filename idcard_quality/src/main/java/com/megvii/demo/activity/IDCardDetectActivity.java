@@ -12,6 +12,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.megvii.demo.utils.BitmapUtil;
 import com.megvii.demo.utils.CommonUtils;
 import com.megvii.demo.utils.Configuration;
 import com.megvii.demo.utils.ICamera;
@@ -525,11 +527,15 @@ public class IDCardDetectActivity extends Activity implements TextureView.Surfac
         Intent intent = new Intent();
         iDCardImg = mQualityResult.croppedImageOfIDCard();
         Log.i("tag", "iDCardImg : " + iDCardImg);
-        intent.putExtra("idcardimg_bitmap", CommonUtils.bmp2byteArr(iDCardImg));
-        if (mQualityResult.attr.side == IDCardAttr.IDCardSide.IDCARD_SIDE_FRONT) {
-            portraitImg = mQualityResult.croppedImageOfPortrait();
-            intent.putExtra("portraitimg_bitmap", CommonUtils.bmp2byteArr(portraitImg));
-        }
+        String s = BitmapUtil.saveBitmap(this, iDCardImg);
+        Uri imageUri = Uri.parse(s);
+        intent.setData(imageUri);
+//        intent.putExtra("idcardimg_bitmap", CommonUtils.bmp2byteArr(iDCardImg));
+
+//        if (mQualityResult.attr.side == IDCardAttr.IDCardSide.IDCARD_SIDE_FRONT) {
+//            portraitImg = mQualityResult.croppedImageOfPortrait();
+//            intent.putExtra("portraitimg_bitmap", CommonUtils.bmp2byteArr(portraitImg));
+//        }
         setResult(RESULT_OK, intent);
         doFinish();
     }

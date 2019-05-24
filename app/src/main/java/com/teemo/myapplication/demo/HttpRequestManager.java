@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.teemo.myapplication.demo.utils.Constants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -152,12 +153,13 @@ public class HttpRequestManager {
     /**
      * 比对银行卡的方法
      */
-    public void distinguishBankCard(Context context, String url, String appKey, String appSecret, byte[] megLiveData, HttpRequestCallBack listener) {
+    public void distinguishCard(Context context, String url, String appKey, String appSecret, byte[] megLiveData, HttpRequestCallBack listener) {
         MultipartEntity entity = new MultipartEntity();
         entity.addBinaryPart("image", megLiveData);
+        entity.addStringPart("api_key", Constants.API_KEY);
+        entity.addStringPart("api_secret", Constants.SECRET);
         sendMultipartRequest(context, url, entity, new HashMap<String, String>(), listener);
     }
-
 
 
 }
